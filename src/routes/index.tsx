@@ -20,6 +20,7 @@ import {
   TrendingUp,
   Users,
   Package,
+  Quote,
 } from "lucide-react";
 import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
