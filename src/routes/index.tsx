@@ -1,5 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Star, Target, Zap, Leaf, Shield, MessageCircle, Truck, Heart } from "lucide-react";
+import {
+  Target,
+  Zap,
+  Leaf,
+  Shield,
+  MessageCircle,
+  Truck,
+  Heart,
+  CalendarDays,
+  Globe,
+  Sprout,
+  Coffee,
+  MapPin,
+  ThermometerSun,
+  Scissors,
+  Droplets,
+} from "lucide-react";
 import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
 import tresEnUno from "@/assets/ganocafe-3en1.jpg.asset.json";
@@ -14,9 +30,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Original Mushroom Coffee GE | Café con Ganoderma" },
-      { name: "description", content: "Café enriquecido con ganoderma para energía, enfoque y bienestar. Pide por WhatsApp." },
+      { name: "description", content: "Café con extracto de ganoderma desde 1995, presente en más de 15 países de Latinoamérica. Pide por WhatsApp." },
       { property: "og:title", content: "Original Mushroom Coffee GE" },
-      { property: "og:description", content: "Café enriquecido con ganoderma. Energía sin nervios, enfoque y bienestar diario." },
+      { property: "og:description", content: "Café con extracto de ganoderma. Sabor 100% a café, energía sin nervios y bienestar diario." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -29,6 +45,36 @@ const beneficios = [
   { icon: Zap, label: "Energía" },
   { icon: Leaf, label: "Digestión" },
   { icon: Shield, label: "Defensas" },
+];
+
+const cifras = [
+  { icon: CalendarDays, n: "1995", l: "Desde" },
+  { icon: Globe, n: "+15", l: "Países de Latinoamérica" },
+  { icon: Sprout, n: "6", l: "Ganodermas seleccionados" },
+  { icon: Coffee, n: "100%", l: "Sabor a café" },
+];
+
+const origen = [
+  {
+    icon: MapPin,
+    t: "Desde Malasia",
+    d: "Nuestro ganoderma viene de Malasia, de donde salen las mejores cepas del mundo.",
+  },
+  {
+    icon: ThermometerSun,
+    t: "Invernaderos con clima controlado",
+    d: "Cultivado con temperatura y humedad controladas, para que el hongo crezca fuerte y limpio.",
+  },
+  {
+    icon: Scissors,
+    t: "Ganoderma cosechado a mano",
+    d: "Se recolecta a mano, en su punto justo. Sin prisas y sin mezclas de relleno.",
+  },
+  {
+    icon: Droplets,
+    t: "Extracto de los 6 ganodermas con mayores beneficios",
+    d: "Extraemos lo activo de seis variedades, no el polvo: por eso tu taza rinde de verdad.",
+  },
 ];
 
 const productos = [
@@ -53,9 +99,18 @@ const productos = [
 ];
 
 const razones = [
-  { t: "Ganoderma de verdad", d: "Usamos ganoderma lucidum (reishi), el hongo milenario conocido como “el hongo de la inmortalidad”." },
-  { t: "Energía sin nervios", d: "Disfruta tu café con un despertar suave, sin bajones ni ansiedad a media tarde." },
-  { t: "Sabor que se antoja", d: "Café de cuerpo completo, aroma intenso y un final suave. Nada de sabores raros." },
+  {
+    t: "Sabor 100% a café",
+    d: "Usamos extracto de ganoderma, no polvo de hongo. Por eso sabe a café y nada más: sin sabor a tierra ni a medicinas.",
+  },
+  {
+    t: "Ganoderma de verdad",
+    d: "Extracto de los 6 ganodermas con mayores beneficios, cosechados a mano en invernaderos de clima controlado en Malasia.",
+  },
+  {
+    t: "Energía sin nervios",
+    d: "Disfruta tu café con un despertar suave, sin bajones ni ansiedad a media tarde.",
+  },
 ];
 
 function Index() {
@@ -72,10 +127,9 @@ function Index() {
 
       <section className="bg-caramel px-5 pb-12 pt-8 text-center text-primary-foreground">
         <div className="mx-auto max-w-3xl">
-          <div className="flex justify-center gap-1">
-            {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
-          </div>
-          <p className="mt-2 font-serif text-lg">Miles de clientes felices</p>
+          <p className="font-serif text-lg">
+            Desde 1995 · Presentes en más de 15 países de Latinoamérica
+          </p>
           <h1 className="mt-6 text-5xl font-bold leading-[1.05] md:text-7xl">
             Café que se antoja. Ganoderma que te cuida.
           </h1>
@@ -87,6 +141,15 @@ function Index() {
               <div key={label} className="flex flex-col items-center gap-2">
                 <I className="h-10 w-10" strokeWidth={1.75} />
                 <span className="font-serif text-sm md:text-base">{label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {cifras.map(({ icon: I, n, l }) => (
+              <div key={l} className="rounded-xl border border-primary-foreground/25 bg-primary-foreground/10 p-4">
+                <I className="mx-auto h-6 w-6" strokeWidth={1.75} />
+                <p className="mt-2 font-serif text-3xl font-bold leading-none">{n}</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wider opacity-90">{l}</p>
               </div>
             ))}
           </div>
@@ -112,6 +175,29 @@ function Index() {
       <section className="bg-cream px-5 py-12 text-center">
         <p className="font-serif text-2xl">Siente la diferencia en solo</p>
         <p className="font-serif text-7xl font-bold text-primary">7 días</p>
+      </section>
+
+      <section className="bg-caramel px-5 py-14">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary-foreground">Nuestro origen</p>
+          <h2 className="mt-4 text-center text-4xl font-bold leading-tight text-primary-foreground md:text-6xl">
+            Del invernadero a tu taza
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl font-medium text-primary-foreground">
+            No cualquier ganoderma sirve. Así se cultiva el que llega a tu café.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {origen.map(({ icon: I, t, d }) => (
+              <div key={t} className="flex gap-4 rounded-xl bg-card p-6 text-left shadow-sm">
+                <I className="h-8 w-8 shrink-0 text-primary" strokeWidth={1.75} />
+                <div>
+                  <h3 className="text-xl font-semibold text-primary">{t}</h3>
+                  <p className="mt-2 leading-relaxed">{d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-5 py-14">
@@ -161,8 +247,9 @@ function Index() {
         </a>
       </section>
 
-      <footer className="bg-cream py-6 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Original Mushroom Coffee GE
+      <footer className="bg-cream px-5 py-6 text-center text-sm text-muted-foreground">
+        <p>© {new Date().getFullYear()} Original Mushroom Coffee GE</p>
+        <p className="mt-1">Desde 1995 · Más de 15 países de Latinoamérica</p>
       </footer>
     </div>
   );
