@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Target, Zap, Leaf, Shield, MessageCircle, Truck, Heart } from "lucide-react";
 import hero from "@/assets/hero-cafe.jpg";
+import classic from "@/assets/ganocafe-classic.jpg.asset.json";
+import tresEnUno from "@/assets/ganocafe-3en1.jpg.asset.json";
+import schokolade from "@/assets/ganocafe-schokolade.jpg.asset.json";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -26,6 +29,27 @@ const beneficios = [
   { icon: Zap, label: "Energía" },
   { icon: Leaf, label: "Digestión" },
   { icon: Shield, label: "Defensas" },
+];
+
+const productos = [
+  {
+    img: classic.url,
+    nombre: "GanoCafé Classic",
+    desc: "Café negro enriquecido con ganoderma lucidum. Intenso, de cuerpo completo y sin azúcar: para los que aman el café de verdad.",
+    detalle: "30 sobres de 3 g",
+  },
+  {
+    img: tresEnUno.url,
+    nombre: "GanoCafé 3 en 1",
+    desc: "Café, crema y un toque de dulzor con ganoderma lucidum. Cremoso y listo en segundos: tu taza perfecta sin complicaciones.",
+    detalle: "20 sobres de 21 g",
+  },
+  {
+    img: schokolade.url,
+    nombre: "GanoCafé Schokolade",
+    desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
+    detalle: "30 sobres de 20 g",
+  },
 ];
 
 const razones = [
@@ -88,6 +112,29 @@ function Index() {
       <section className="bg-cream px-5 py-12 text-center">
         <p className="font-serif text-2xl">Siente la diferencia en solo</p>
         <p className="font-serif text-7xl font-bold text-primary">7 días</p>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-14">
+        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Nuestros productos</p>
+        <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-6xl">Elige tu favorito</h2>
+        <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-muted-foreground">
+          Tres formas de disfrutar el poder del ganoderma, una para cada momento del día.
+        </p>
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
+          {productos.map((p) => (
+            <div key={p.nombre} className="flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
+              <img src={p.img} alt={`Caja de ${p.nombre} con ganoderma`} width={832} height={1248} className="aspect-[2/3] w-full object-cover" />
+              <div className="flex flex-1 flex-col p-6 text-center">
+                <h3 className="text-2xl font-semibold text-primary">{p.nombre}</h3>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-muted-foreground">{p.detalle}</p>
+                <p className="mt-3 flex-1 leading-relaxed">{p.desc}</p>
+                <a href={wa(`¡Hola! Me interesa el ${p.nombre} ☕🍄`)} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-serif text-lg font-semibold text-primary-foreground transition hover:brightness-110">
+                  <MessageCircle className="h-5 w-5" /> Pedir ahora
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-14">
