@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Target, Zap, Leaf, Shield, MessageCircle, Truck, Heart } from "lucide-react";
-import hero from "@/assets/hero-cafe.jpg";
+import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
 import tresEnUno from "@/assets/ganocafe-3en1.jpg.asset.json";
 import schokolade from "@/assets/ganocafe-schokolade.jpg.asset.json";
@@ -90,7 +90,7 @@ function Index() {
               </div>
             ))}
           </div>
-          <img src={hero} alt="Bolsa de Original Mushroom Coffee GE con ganoderma y taza de café" width={1280} height={896} className="mt-8 w-full rounded-xl" />
+          <img src={ganoderma.url} alt="Beneficios del ganoderma: apoya el sistema inmunológico, da energía, mejora la circulación, el sueño y la piel, oxigena y desintoxica el cuerpo" width={1024} height={1026} className="mx-auto mt-8 w-full max-w-2xl rounded-xl" />
           <div className="mt-8 flex flex-col gap-4">
             <a href={wa(MSG)} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-full bg-primary py-4 font-serif text-2xl font-semibold text-primary-foreground transition hover:brightness-110">
               <MessageCircle className="h-6 w-6" /> Pedir por WhatsApp
