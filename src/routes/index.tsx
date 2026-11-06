@@ -385,7 +385,7 @@ function Index() {
         <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Nuestros productos</p>
         <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-6xl">Elige tu favorito</h2>
         <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-muted-foreground">
-          Tres formas de disfrutar el poder del ganoderma, una para cada momento del día.
+          Tres formas de disfrutar el poder del ganoderma, caliente o fría, una para cada momento del día. Desliza cada producto para verlo en las dos versiones.
         </p>
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {productos.map((p) => (
