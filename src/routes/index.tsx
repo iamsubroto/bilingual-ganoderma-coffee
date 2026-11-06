@@ -177,13 +177,13 @@ function Index() {
         <p className="font-serif text-7xl font-bold text-primary">7 días</p>
       </section>
 
-      <section className="bg-caramel-light px-5 py-14">
+      <section className="bg-caramel px-5 py-14">
         <div className="mx-auto max-w-5xl">
           <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary-foreground">Nuestro origen</p>
           <h2 className="mt-4 text-center text-4xl font-bold leading-tight text-primary-foreground md:text-6xl">
             Del invernadero a tu taza
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-primary-foreground">
+          <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl font-medium text-primary-foreground">
             No cualquier ganoderma sirve. Así se cultiva el que llega a tu café.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
