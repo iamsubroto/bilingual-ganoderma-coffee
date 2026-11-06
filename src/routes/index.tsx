@@ -119,6 +119,21 @@ const razones = [
   },
 ];
 
+const testimonios = [
+  {
+    nombre: "Karina P.",
+    texto: "Desde que probé el 3 en 1 no me dio agruras, es algo que sufría mucho con el café normal.",
+  },
+  {
+    nombre: "Luis R",
+    texto: "Esa noche dormí muy a gusto después de tomarme mi taza de cacao, hace mucho que padecía de insomnio.",
+  },
+  {
+    nombre: "Gerardo M",
+    texto: "El café negro me dio esa claridad mental durante el día, adicional mi energía emocional subió al 100%.",
+  },
+];
+
 const modelo = [
   {
     icon: Package,
