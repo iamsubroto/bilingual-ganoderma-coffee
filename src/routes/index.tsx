@@ -366,6 +366,43 @@ function Index() {
         </a>
       </section>
 
+      <section id="modelo-de-negocio" className="mx-auto max-w-5xl px-5 py-14">
+        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Modelo de negocio</p>
+        <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-6xl">
+          Convierte el café en tu negocio
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-muted-foreground">
+          Distribuye una marca con historia, producto de consumo diario y una red que ya crece en más de 15 países.
+        </p>
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {modelo.map(({ icon: I, t, d }) => (
+            <div key={t} className="rounded-xl border bg-card p-6 text-center shadow-sm">
+              <I className="mx-auto h-10 w-10 text-primary" strokeWidth={1.75} />
+              <h3 className="mt-4 text-2xl font-semibold text-primary">{t}</h3>
+              <p className="mt-2 leading-relaxed">{d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <a href="#quiero-distribuir" className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-10 py-4 font-serif text-2xl font-semibold text-primary-foreground transition hover:brightness-110">
+            <Handshake className="h-6 w-6" /> Quiero distribuir la marca
+          </a>
+        </div>
+      </section>
+
+      <section id="quiero-distribuir" className="bg-caramel-light px-5 py-14">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary">Únete a la red</p>
+          <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
+            Quiero distribuir la marca
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl font-serif text-xl text-muted-foreground">
+            Déjanos tus datos y te contactamos para explicarte el modelo de negocio paso a paso.
+          </p>
+          <FormularioDistribuidor />
+        </div>
+      </section>
+
       <footer className="bg-cream px-5 py-6 text-center text-sm text-muted-foreground">
         <p>© {new Date().getFullYear()} Original Mushroom Coffee GE</p>
         <p className="mt-1">Desde 1995 · Más de 15 países de Latinoamérica</p>
