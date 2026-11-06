@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Target,
   Zap,
@@ -14,6 +16,10 @@ import {
   ThermometerSun,
   Scissors,
   Droplets,
+  Handshake,
+  TrendingUp,
+  Users,
+  Package,
 } from "lucide-react";
 import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
