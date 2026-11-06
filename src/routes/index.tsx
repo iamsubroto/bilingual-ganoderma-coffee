@@ -26,6 +26,9 @@ import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
 import tresEnUno from "@/assets/ganocafe-3en1.jpg.asset.json";
 import schokolade from "@/assets/ganocafe-schokolade.jpg.asset.json";
+import classicFria from "@/assets/classic-frio.jpg";
+import tresEnUnoFria from "@/assets/3en1-frio.jpg";
+import schokoladeFria from "@/assets/schokolade-frio.jpg";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -86,18 +89,21 @@ const origen = [
 const productos = [
   {
     img: classic.url,
+    imgFria: classicFria,
     nombre: "GanoCafé Classic",
     desc: "Café negro enriquecido con ganoderma lucidum. Intenso, de cuerpo completo y sin azúcar: para los que aman el café de verdad.",
     detalle: "30 sobres de 3 g",
   },
   {
     img: tresEnUno.url,
+    imgFria: tresEnUnoFria,
     nombre: "GanoCafé 3 en 1",
     desc: "Café, crema y un toque de dulzor con ganoderma lucidum. Cremoso y listo en segundos: tu taza perfecta sin complicaciones.",
     detalle: "20 sobres de 21 g",
   },
   {
     img: schokolade.url,
+    imgFria: schokoladeFria,
     nombre: "GanoCafé Schokolade",
     desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
     detalle: "30 sobres de 20 g",
