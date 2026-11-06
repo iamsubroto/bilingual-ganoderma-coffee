@@ -142,8 +142,8 @@ const modelo = [
   },
   {
     icon: Users,
-    t: "Red de socios",
-    d: "Te sumas a una red de distribuidores que ya opera en toda Latinoamérica, con acompañamiento cercano.",
+    t: "Tu propio negocio",
+    d: "Tú pones el ritmo: distribuye la marca en tu ciudad y haz crecer tu cartera de clientes.",
   },
   {
     icon: TrendingUp,
@@ -410,7 +410,7 @@ function Index() {
           Convierte el café en tu negocio
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-muted-foreground">
-          Distribuye una marca con historia, producto de consumo diario y una red que ya crece en más de 15 países.
+          Distribuye una marca con historia, producto de consumo diario y presencia en más de 15 países.
         </p>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {modelo.map(({ icon: I, t, d }) => (
@@ -430,7 +430,7 @@ function Index() {
 
       <section id="quiero-distribuir" className="bg-caramel-light px-5 py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary">Únete a la red</p>
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary">Oportunidad de negocio</p>
           <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
             Quiero distribuir la marca
           </h2>
