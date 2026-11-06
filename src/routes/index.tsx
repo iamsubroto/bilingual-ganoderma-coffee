@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Target,
@@ -157,6 +157,46 @@ const modelo = [
     d: "El café se toma todos los días: tus clientes vuelven a comprar una y otra vez, y tu negocio crece con ellos.",
   },
 ];
+
+function CarruselProducto({ img, imgFria, nombre }: { img: string; imgFria: string; nombre: string }) {
+  const [activa, setActiva] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const alDeslizar = () => {
+    const el = ref.current;
+    if (!el) return;
+    setActiva(Math.round(el.scrollLeft / el.clientWidth));
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={ref}
+        onScroll={alDeslizar}
+        className="flex snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        <div className="relative w-full shrink-0 snap-center">
+          <img src={img} alt={`Caja de ${nombre} con ganoderma, preparación caliente`} width={832} height={1248} className="aspect-[2/3] w-full object-cover" />
+          <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">Caliente</span>
+        </div>
+        <div className="relative w-full shrink-0 snap-center">
+          <img src={imgFria} alt={`${nombre} preparado como bebida fría con hielo`} width={832} height={1248} className="aspect-[2/3] w-full object-cover" />
+          <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">Fría</span>
+        </div>
+      </div>
+      <div className="absolute bottom-3 left-0 right-0 flex items-center justify-center gap-2">
+        {[0, 1].map((i) => (
+          <span key={i} className={`h-2 w-2 rounded-full transition ${activa === i ? "bg-primary" : "bg-primary-foreground/70"}`} />
+        ))}
+      </div>
+      {activa === 0 && (
+        <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-white">
+          Desliza →
+        </span>
+      )}
+    </div>
+  );
+}
 
 function FormularioDistribuidor() {
   const [nombre, setNombre] = useState("");
@@ -350,7 +390,7 @@ function Index() {
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {productos.map((p) => (
             <div key={p.nombre} className="flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
-              <img src={p.img} alt={`Caja de ${p.nombre} con ganoderma`} width={832} height={1248} className="aspect-[2/3] w-full object-cover" />
+              <CarruselProducto img={p.img} imgFria={p.imgFria} nombre={p.nombre} />
               <div className="flex flex-1 flex-col p-6 text-center">
                 <h3 className="text-2xl font-semibold text-primary">{p.nombre}</h3>
                 <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-muted-foreground">{p.detalle}</p>
