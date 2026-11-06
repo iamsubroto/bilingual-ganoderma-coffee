@@ -114,6 +114,29 @@ function Index() {
         <p className="font-serif text-7xl font-bold text-primary">7 días</p>
       </section>
 
+      <section className="mx-auto max-w-5xl px-5 py-14">
+        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Nuestros productos</p>
+        <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-6xl">Elige tu favorito</h2>
+        <p className="mx-auto mt-4 max-w-xl text-center font-serif text-xl text-muted-foreground">
+          Tres formas de disfrutar el poder del ganoderma, una para cada momento del día.
+        </p>
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
+          {productos.map((p) => (
+            <div key={p.nombre} className="flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
+              <img src={p.img} alt={`Caja de ${p.nombre} con ganoderma`} width={832} height={1248} className="aspect-[2/3] w-full object-cover" />
+              <div className="flex flex-1 flex-col p-6 text-center">
+                <h3 className="text-2xl font-semibold text-primary">{p.nombre}</h3>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-muted-foreground">{p.detalle}</p>
+                <p className="mt-3 flex-1 leading-relaxed">{p.desc}</p>
+                <a href={wa(`¡Hola! Me interesa el ${p.nombre} ☕🍄`)} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-serif text-lg font-semibold text-primary-foreground transition hover:brightness-110">
+                  <MessageCircle className="h-5 w-5" /> Pedir ahora
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="mx-auto max-w-3xl px-5 py-14">
         <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary">Lo que nos hace diferentes</p>
         <h2 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">Un mejor estándar para tu café de cada día</h2>
