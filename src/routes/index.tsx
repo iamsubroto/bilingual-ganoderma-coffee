@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Target, Zap, Leaf, Shield, MessageCircle, Truck, Heart } from "lucide-react";
 import hero from "@/assets/hero-cafe.jpg";
+import classic from "@/assets/ganocafe-classic.jpg.asset.json";
+import tresEnUno from "@/assets/ganocafe-3en1.jpg.asset.json";
+import schokolade from "@/assets/ganocafe-schokolade.jpg.asset.json";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -26,6 +29,27 @@ const beneficios = [
   { icon: Zap, label: "Energía" },
   { icon: Leaf, label: "Digestión" },
   { icon: Shield, label: "Defensas" },
+];
+
+const productos = [
+  {
+    img: classic.url,
+    nombre: "GanoCafé Classic",
+    desc: "Café negro enriquecido con ganoderma lucidum. Intenso, de cuerpo completo y sin azúcar: para los que aman el café de verdad.",
+    detalle: "30 sobres de 3 g",
+  },
+  {
+    img: tresEnUno.url,
+    nombre: "GanoCafé 3 en 1",
+    desc: "Café, crema y un toque de dulzor con ganoderma lucidum. Cremoso y listo en segundos: tu taza perfecta sin complicaciones.",
+    detalle: "20 sobres de 21 g",
+  },
+  {
+    img: schokolade.url,
+    nombre: "GanoCafé Schokolade",
+    desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
+    detalle: "30 sobres de 20 g",
+  },
 ];
 
 const razones = [
