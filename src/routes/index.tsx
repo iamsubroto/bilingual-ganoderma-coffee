@@ -5,7 +5,6 @@ import {
   Leaf,
   Shield,
   MessageCircle,
-  Truck,
   Heart,
   CalendarDays,
   Globe,
@@ -163,7 +162,7 @@ function Index() {
             </a>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-4 font-serif">
-            <div className="flex flex-col items-center gap-1"><Truck className="h-6 w-6" />Envíos a todo México</div>
+            <div className="flex flex-col items-center gap-1"><Globe className="h-6 w-6" />Presentes en +15 países</div>
             <div className="flex flex-col items-center gap-1"><Heart className="h-6 w-6" />Atención directa y cercana</div>
           </div>
         </div>
