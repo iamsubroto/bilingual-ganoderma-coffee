@@ -374,6 +374,28 @@ function Index() {
         </div>
       </section>
 
+      <section className="bg-cream px-5 py-14">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Testimonios</p>
+          <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-6xl">
+            Lo que dicen quienes ya lo probaron
+          </h2>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {testimonios.map((t) => (
+              <figure key={t.nombre} className="flex flex-col rounded-xl border bg-card p-6 text-left shadow-sm">
+                <Quote className="h-8 w-8 text-primary" strokeWidth={1.75} />
+                <blockquote className="mt-4 flex-1 font-serif text-lg leading-relaxed">
+                  “{t.texto}”
+                </blockquote>
+                <figcaption className="mt-4 text-sm font-bold uppercase tracking-widest text-primary">
+                  {t.nombre}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-caramel px-5 py-14 text-center text-primary-foreground">
         <h2 className="text-4xl font-bold">¿Listo para tu primera taza?</h2>
         <p className="mt-3 font-serif text-lg">Escríbenos y te ayudamos con tu pedido.</p>
