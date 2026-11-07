@@ -25,6 +25,9 @@ import {
   Check,
 } from "lucide-react";
 import { FormularioDistribuidor } from "@/components/FormularioDistribuidor";
+import habitoCafe from "@/assets/distribuir-habito-cafe.jpg";
+import cafeBienestar from "@/assets/distribuir-cafe-bienestar.jpg";
+import negocioCasa from "@/assets/distribuir-negocio-casa.jpg";
 
 export const Route = createFileRoute("/distribuye")({
   head: () => ({
@@ -154,8 +157,9 @@ function Distribuye() {
       </header>
 
       {/* Hero */}
-      <section className="bg-caramel px-5 py-14 text-center text-primary-foreground">
-        <div className="mx-auto max-w-3xl">
+      <section className="distribution-photo distribution-photo-dark distribution-photo-hero bg-caramel px-5 py-14 text-center text-primary-foreground">
+        <img src={habitoCafe} alt="" aria-hidden="true" width={1600} height={1008} fetchPriority="high" className="distribution-photo-image" />
+        <div className="distribution-photo-content mx-auto max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-[0.25em]">Oportunidad de negocio</p>
           <h1 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
             No cambiamos hábitos. Solo los mejoramos.
@@ -170,8 +174,9 @@ function Distribuye() {
       </section>
 
       {/* Industria */}
-      <section className="bg-cream px-5 py-14">
-        <div className="mx-auto max-w-5xl">
+      <section className="distribution-photo distribution-photo-light bg-cream px-5 py-14">
+        <img src={cafeBienestar} alt="" aria-hidden="true" width={1600} height={1008} loading="lazy" className="distribution-photo-image" />
+        <div className="distribution-photo-content mx-auto max-w-5xl">
           <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">La industria</p>
           <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-5xl">
             Dos gigantes que crecen todos los días
@@ -215,8 +220,9 @@ function Distribuye() {
       </section>
 
       {/* 2. La solución */}
-      <section className="bg-caramel px-5 py-14 text-primary-foreground">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="distribution-photo distribution-photo-dark bg-caramel px-5 py-14 text-primary-foreground">
+        <img src={negocioCasa} alt="" aria-hidden="true" width={1600} height={1008} loading="lazy" className="distribution-photo-image" />
+        <div className="distribution-photo-content mx-auto max-w-3xl text-center">
           <p className="text-sm font-bold uppercase tracking-[0.25em]">La solución</p>
           <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">El modelo inteligente</h2>
           <p className="mx-auto mt-6 max-w-xl font-serif text-xl">
