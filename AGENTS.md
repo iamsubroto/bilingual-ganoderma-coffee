@@ -30,3 +30,4 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Distribution-page photographs use decorative image layers and semantic overlay tokens in the global stylesheet, so copy stays readable and mobile framing stays consistent.
+- Display monthly distribution-maintenance terms from the shared terms module and cover numeric requirements with tests, so minimums and approximate equivalents stay consistent.
