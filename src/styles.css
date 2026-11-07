@@ -54,6 +54,8 @@
   --distribution-photo-shade: oklch(0.27 0.035 55);
   --distribution-photo-dark-overlay: linear-gradient(90deg, color-mix(in oklab, var(--distribution-photo-shade) 94%, transparent), color-mix(in oklab, var(--distribution-photo-shade) 76%, transparent) 55%, color-mix(in oklab, var(--distribution-photo-shade) 30%, transparent));
   --distribution-photo-light-overlay: linear-gradient(90deg, color-mix(in oklab, var(--cream) 97%, transparent), color-mix(in oklab, var(--cream) 88%, transparent) 55%, color-mix(in oklab, var(--cream) 52%, transparent));
+  --distribution-photo-mobile-dark-overlay: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--distribution-photo-shade) 12%, transparent) 55%, var(--distribution-photo-shade) 100%);
+  --distribution-photo-mobile-light-overlay: linear-gradient(to bottom, transparent, color-mix(in oklab, var(--cream) 12%, transparent) 55%, var(--cream) 100%);
 }
 
 @layer base {
@@ -105,14 +107,34 @@
   .distribution-photo-hero { min-height: 540px; }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .distribution-photo-dark h1, .distribution-photo-dark h2 { max-width: 65%; }
+  .distribution-photo-dark p { max-width: 60%; }
+  .distribution-photo-dark a { max-width: 60%; font-size: 1.25rem; }
+}
+
 @media (max-width: 767px) {
-  .distribution-photo { padding-top: 230px; }
-  .distribution-photo-image { height: 360px; object-position: right top; }
+  .distribution-photo {
+    --photo-height: clamp(210px, 65vw, 300px);
+    padding-top: calc(var(--photo-height) + 20px);
+    padding-bottom: 40px;
+  }
+  .distribution-photo-image {
+    height: var(--photo-height);
+    object-position: 85% center;
+  }
+  .distribution-photo-hero .distribution-photo-image { object-position: right center; }
   .distribution-photo-dark { background: var(--distribution-photo-shade); }
+  .distribution-photo-light { background: var(--cream); }
+  .distribution-photo::before { bottom: auto; height: var(--photo-height); }
   .distribution-photo-dark::before {
-    background: linear-gradient(to bottom, color-mix(in oklab, var(--distribution-photo-shade) 8%, transparent), var(--distribution-photo-shade) 340px);
+    background: var(--distribution-photo-mobile-dark-overlay);
   }
   .distribution-photo-light::before {
-    background: linear-gradient(to bottom, color-mix(in oklab, var(--cream) 8%, transparent), var(--cream) 340px);
+    background: var(--distribution-photo-mobile-light-overlay);
   }
+  .distribution-photo-content { min-width: 0; }
+  .distribution-photo-dark h1 { font-size: 2rem; }
+  .distribution-photo-dark p { font-size: 1.125rem; line-height: 1.6; }
+  .distribution-photo-dark a { padding-inline: 16px; font-size: 1.25rem; }
 }
