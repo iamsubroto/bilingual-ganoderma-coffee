@@ -29,6 +29,7 @@ import schokolade from "@/assets/ganocafe-schokolade.jpg.asset.json";
 import classicFria from "@/assets/classic-frio.jpg";
 import tresEnUnoFria from "@/assets/3en1-frio.jpg";
 import schokoladeFria from "@/assets/schokolade-frio.jpg";
+import heroProductos from "@/assets/hero-productos.jpg";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -325,6 +326,7 @@ function Index() {
               </div>
             ))}
           </div>
+          <img src={heroProductos} alt="Los tres productos: GanoCafé Classic, GanoCafé 3 en 1 y GanoCafé Schokolade, con sus bebidas preparadas calientes y frías" width={1600} height={1000} className="mx-auto mt-10 w-full max-w-3xl rounded-xl shadow-lg" />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {cifras.map(({ icon: I, n, l }) => (
               <div key={l} className="rounded-xl border border-primary-foreground/25 bg-primary-foreground/10 p-4">
