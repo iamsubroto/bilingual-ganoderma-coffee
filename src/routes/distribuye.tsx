@@ -28,6 +28,7 @@ import { FormularioDistribuidor } from "@/components/FormularioDistribuidor";
 import habitoCafe from "@/assets/distribuir-habito-cafe.jpg";
 import cafeBienestar from "@/assets/distribuir-cafe-bienestar.jpg";
 import negocioCasa from "@/assets/distribuir-negocio-casa.jpg";
+import { monthlyMaintenance } from "@/lib/distribution-terms";
 
 export const Route = createFileRoute("/distribuye")({
   head: () => ({
@@ -281,6 +282,37 @@ function Distribuye() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="mantenimiento-mensual" className="border-y border-border bg-secondary px-5 py-12">
+        <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <Repeat className="mx-auto h-8 w-8 text-primary" strokeWidth={1.75} />
+            <h2 id="mantenimiento-mensual" className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
+              Bajo costo de mantenimiento
+            </h2>
+            <p className="mt-4 font-serif text-xl leading-relaxed">
+              Compra al menos <strong>{monthlyMaintenance.minimumPoints} puntos cada mes</strong> para mantener tu negocio activo y recibir regalías.
+            </p>
+          </div>
+          <dl className="mx-auto mt-8 grid max-w-3xl gap-6 text-center sm:grid-cols-3">
+            <div>
+              <dt className="text-sm font-semibold text-muted-foreground">Compra mínima mensual</dt>
+              <dd className="mt-2 font-serif text-3xl font-bold">{monthlyMaintenance.minimumPoints} puntos</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-muted-foreground">Productos en promedio</dt>
+              <dd className="mt-2 font-serif text-3xl font-bold">{monthlyMaintenance.averageProducts} productos</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold text-muted-foreground">Costo mensual promedio</dt>
+              <dd className="mt-2 font-serif text-3xl font-bold">${monthlyMaintenance.averageCostUsd} USD</dd>
+            </div>
+          </dl>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+            La cantidad de productos y el costo son aproximados; el requisito es comprar al menos {monthlyMaintenance.minimumPoints} puntos al mes.
+          </p>
         </div>
       </section>
 
