@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Distribution-page photographs use decorative image layers and semantic overlay tokens in the global stylesheet, so copy stays readable and mobile framing stays consistent.
