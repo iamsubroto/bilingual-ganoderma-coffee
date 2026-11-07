@@ -90,7 +90,7 @@ const paquetes = [
     nombre: "Básico",
     precio: "$100",
     desc: "La puerta de entrada al negocio.",
-    items: ["Los 7 beneficios generales de la empresa"],
+    items: ["4 productos", "Los 7 beneficios generales de la empresa"],
     destacado: false,
   },
   {
