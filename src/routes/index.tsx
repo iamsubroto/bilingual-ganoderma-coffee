@@ -107,7 +107,7 @@ const productos = [
     imgFria: schokoladeFria,
     nombre: "GanoCafé Schokolade",
     desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
-    detalle: "30 sobres de 20 g",
+    detalle: "20 sobres de 20 g",
   },
 ] as const;
 
