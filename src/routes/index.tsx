@@ -29,6 +29,7 @@ import classicFria from "@/assets/classic-frio.jpg";
 import tresEnUnoFria from "@/assets/3en1-frio.jpg";
 import schokoladeFria from "@/assets/schokolade-frio.jpg";
 import heroProductos from "@/assets/hero-productos.jpg";
+import { productPrices, usd, type ProductName } from "@/lib/product-pricing";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -108,7 +109,7 @@ const productos = [
     desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
     detalle: "30 sobres de 20 g",
   },
-];
+] as const;
 
 const razones = [
   {
@@ -158,6 +159,59 @@ const modelo = [
   },
 ];
 
+type Opcion = "subscribe" | "oneTime";
+
+const etiquetasOpcion: Record<Opcion, string> = {
+  subscribe: "Suscríbete y ahorra",
+  oneTime: "Compra una vez",
+};
+
+function OpcionesPrecio({ producto, seleccion, onSeleccion }: { producto: ProductName; seleccion: Opcion; onSeleccion: (o: Opcion) => void }) {
+  const precios = productPrices[producto];
+  return (
+    <div className="mt-5 space-y-3 text-left">
+      {(["subscribe", "oneTime"] as const).map((opcion) => {
+        const p = precios[opcion];
+        const activa = seleccion === opcion;
+        return (
+          <label
+            key={opcion}
+            className={`flex cursor-pointer items-center gap-3 rounded-2xl bg-card p-3 transition ${
+              activa ? "border-2 border-primary shadow-sm" : "border border-border"
+            }`}
+          >
+            <input
+              type="radio"
+              name={`precio-${producto}`}
+              checked={activa}
+              onChange={() => onSeleccion(opcion)}
+              className="sr-only"
+            />
+            <span
+              aria-hidden
+              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
+                activa ? "border-primary" : "border-muted-foreground/50"
+              }`}
+            >
+              {activa && <span className="h-2.5 w-2.5 rounded-full bg-primary" />}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-bold">{etiquetasOpcion[opcion]}</span>
+              <span className="mt-1 flex flex-wrap items-center gap-2">
+                <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary-foreground ${opcion === "subscribe" ? "bg-primary" : "bg-muted-foreground"}`}>
+                  Ahorra {p.savePercent}%
+                </span>
+                <span className="text-sm text-muted-foreground line-through">{usd(p.originalUsd)}</span>
+                <span className="font-serif text-lg font-bold text-primary">{usd(p.finalUsd)}</span>
+              </span>
+            </span>
+          </label>
+        );
+      })}
+    </div>
+  );
+}
+
 function CarruselProducto({ img, imgFria, nombre }: { img: string; imgFria: string; nombre: string }) {
   const [activa, setActiva] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -199,6 +253,12 @@ function CarruselProducto({ img, imgFria, nombre }: { img: string; imgFria: stri
 }
 
 function Index() {
+  const [seleccion, setSeleccion] = useState<Record<ProductName, Opcion>>({
+    "GanoCafé Classic": "subscribe",
+    "GanoCafé 3 en 1": "subscribe",
+    "GanoCafé Schokolade": "subscribe",
+  });
+
   return (
     <div className="min-h-screen">
       <div className="bg-primary px-4 py-2 text-center text-sm font-semibold text-primary-foreground">
@@ -300,7 +360,12 @@ function Index() {
                 <h3 className="text-2xl font-semibold text-primary">{p.nombre}</h3>
                 <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-muted-foreground">{p.detalle}</p>
                 <p className="mt-3 flex-1 leading-relaxed">{p.desc}</p>
-                <a href={wa(`¡Hola! Me interesa el ${p.nombre} ☕🍄`)} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-serif text-lg font-semibold text-primary-foreground transition hover:brightness-110">
+                <OpcionesPrecio
+                  producto={p.nombre}
+                  seleccion={seleccion[p.nombre]}
+                  onSeleccion={(o) => setSeleccion((prev) => ({ ...prev, [p.nombre]: o }))}
+                />
+                <a href={wa(`¡Hola! Quiero el ${p.nombre} ☕🍄 (${etiquetasOpcion[seleccion[p.nombre]]}: ${usd(productPrices[p.nombre][seleccion[p.nombre]].finalUsd)})`)} target="_blank" rel="noreferrer" className="mt-5 flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-serif text-lg font-semibold text-primary-foreground transition hover:brightness-110">
                   <MessageCircle className="h-5 w-5" /> Pedir ahora
                 </a>
               </div>
