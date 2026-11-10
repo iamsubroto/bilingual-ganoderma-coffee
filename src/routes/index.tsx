@@ -413,7 +413,7 @@ function Index() {
                 ].map((f) => (
                   <tr key={f}>
                     <td className="p-3 font-medium">{f}</td>
-                    <td className="p-3 text-center text-lg text-muted-foreground">✕</td>
+                    <td className="p-3 text-center text-lg text-muted-foreground">{f === "Café real que sabe a café" ? "✓" : "✕"}</td>
                     <td className="p-3 text-center text-lg font-bold text-primary">✓</td>
                   </tr>
                 ))}
