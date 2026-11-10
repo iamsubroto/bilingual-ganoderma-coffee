@@ -20,7 +20,6 @@ import {
   Users,
   Package,
   Quote,
-  Check,
 } from "lucide-react";
 import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
@@ -110,7 +109,7 @@ const productos = [
     desc: "Chocolate caliente enriquecido con ganoderma lucidum. Rico, reconfortante y perfecto para toda la familia.",
     detalle: "30 sobres de 20 g",
   },
-];
+] as const;
 
 const razones = [
   {
