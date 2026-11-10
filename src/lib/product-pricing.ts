@@ -28,3 +28,13 @@ export const productPrices = {
 export type ProductName = keyof typeof productPrices;
 
 export const usd = (n: number) => `$${n.toFixed(2)} usd`;
+
+// Sobres por caja de cada producto.
+export const sachetsPerBox: Record<ProductName, number> = {
+  "GanoCafé Classic": 30,
+  "GanoCafé 3 en 1": 20,
+  "GanoCafé Schokolade": 20,
+};
+
+export const costPerSachet = (producto: ProductName, opcion: keyof ProductPricing) =>
+  Math.round((productPrices[producto][opcion].finalUsd / sachetsPerBox[producto]) * 100) / 100;

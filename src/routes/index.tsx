@@ -29,7 +29,7 @@ import classicFria from "@/assets/classic-frio.jpg";
 import tresEnUnoFria from "@/assets/3en1-frio.jpg";
 import schokoladeFria from "@/assets/schokolade-frio.jpg";
 import heroProductos from "@/assets/hero-productos.jpg";
-import { productPrices, usd, type ProductName } from "@/lib/product-pricing";
+import { productPrices, usd, costPerSachet, type ProductName } from "@/lib/product-pricing";
 
 // TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
 const WHATSAPP = "5210000000000";
@@ -387,6 +387,54 @@ function Index() {
               <p className="mt-2 leading-relaxed">{r.d}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-cream px-5 py-14">
+        <div className="mx-auto max-w-4xl">
+          <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">Compara</p>
+          <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-5xl">Café regular vs. nuestro café</h2>
+          <div className="mt-8 overflow-hidden rounded-xl border bg-card shadow-sm">
+            <table className="w-full text-left text-sm md:text-base">
+              <thead>
+                <tr className="bg-caramel text-primary-foreground">
+                  <th className="p-3 font-serif font-semibold">Característica</th>
+                  <th className="p-3 text-center font-serif font-semibold">Café regular</th>
+                  <th className="p-3 text-center font-serif font-semibold">Nuestro café</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                {[
+                  "Cero acidez",
+                  "Sin sensación de taquicardia ni nerviosismo",
+                  "Café real que sabe a café",
+                  "Con extracto de ganoderma",
+                  "Listo en segundos, caliente o frío",
+                ].map((f) => (
+                  <tr key={f}>
+                    <td className="p-3 font-medium">{f}</td>
+                    <td className="p-3 text-center text-lg text-muted-foreground">✕</td>
+                    <td className="p-3 text-center text-lg font-bold text-primary">✓</td>
+                  </tr>
+                ))}
+                <tr className="bg-caramel-light/40">
+                  <td className="p-3 font-medium">Costo por taza</td>
+                  <td className="p-3 text-center">Desde $3.00 usd en cafetería</td>
+                  <td className="p-3 text-center font-bold text-primary">Desde {usd(costPerSachet("GanoCafé Classic", "subscribe"))} por sobre</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul className="mt-6 grid gap-3 text-center text-sm md:grid-cols-3">
+            {productos.map((p) => (
+              <li key={p.nombre} className="rounded-xl border bg-card p-4">
+                <span className="block font-serif text-lg font-semibold text-primary">{p.nombre}</span>
+                <span className="block font-bold">{usd(costPerSachet(p.nombre, "subscribe"))} por sobre</span>
+                <span className="text-muted-foreground">con suscripción ({usd(costPerSachet(p.nombre, "oneTime"))} compra única)</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-center text-xs text-muted-foreground">Comparación de experiencia de consumo y precio. No sustituye consejo médico ni pretende curar enfermedades.</p>
         </div>
       </section>
 
