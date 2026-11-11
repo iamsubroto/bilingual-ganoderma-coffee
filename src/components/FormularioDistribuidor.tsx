@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Handshake } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
 export function FormularioDistribuidor() {
+  const { t } = useLang();
   const [nombre, setNombre] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");
@@ -32,9 +34,12 @@ export function FormularioDistribuidor() {
     return (
       <div className="mx-auto mt-8 max-w-md rounded-xl bg-card p-8 text-center shadow-sm">
         <Handshake className="mx-auto h-10 w-10 text-primary" strokeWidth={1.75} />
-        <p className="mt-4 font-serif text-2xl font-semibold text-primary">¡Gracias, {nombre.trim().split(" ")[0]}!</p>
+        <p className="mt-4 font-serif text-2xl font-semibold text-primary">{t("¡Gracias, ", "Thank you, ")}{nombre.trim().split(" ")[0]}!</p>
         <p className="mt-2 leading-relaxed">
-          Recibimos tus datos. Muy pronto te contactamos para contarte cómo distribuir la marca en tu país.
+          {t(
+            "Recibimos tus datos. Muy pronto te contactamos para contarte cómo distribuir la marca en tu país.",
+            "We received your details. We'll contact you soon to explain how to distribute the brand in your country.",
+          )}
         </p>
       </div>
     );
@@ -43,7 +48,7 @@ export function FormularioDistribuidor() {
   return (
     <form onSubmit={enviar} className="mx-auto mt-8 flex max-w-md flex-col gap-4 text-left">
       <div>
-        <label htmlFor="nombre" className="text-sm font-semibold uppercase tracking-wider">Nombre completo</label>
+        <label htmlFor="nombre" className="text-sm font-semibold uppercase tracking-wider">{t("Nombre completo", "Full name")}</label>
         <input
           id="nombre"
           type="text"
@@ -51,7 +56,7 @@ export function FormularioDistribuidor() {
           maxLength={100}
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
-          placeholder="Tu nombre"
+          placeholder={t("Tu nombre", "Your name")}
           className="mt-1 w-full rounded-lg border bg-card px-4 py-3 outline-none focus:ring-2 focus:ring-primary"
         />
       </div>
@@ -69,7 +74,7 @@ export function FormularioDistribuidor() {
         />
       </div>
       <div>
-        <label htmlFor="email" className="text-sm font-semibold uppercase tracking-wider">Correo electrónico</label>
+        <label htmlFor="email" className="text-sm font-semibold uppercase tracking-wider">{t("Correo electrónico", "Email")}</label>
         <input
           id="email"
           type="email"
@@ -77,13 +82,13 @@ export function FormularioDistribuidor() {
           maxLength={255}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="tucorreo@ejemplo.com"
+          placeholder={t("tucorreo@ejemplo.com", "you@example.com")}
           className="mt-1 w-full rounded-lg border bg-card px-4 py-3 outline-none focus:ring-2 focus:ring-primary"
         />
       </div>
       {estado === "error" && (
         <p className="text-center text-sm font-semibold text-destructive">
-          Revisa tus datos e inténtalo de nuevo, por favor.
+          {t("Revisa tus datos e inténtalo de nuevo, por favor.", "Please check your details and try again.")}
         </p>
       )}
       <button
@@ -92,7 +97,7 @@ export function FormularioDistribuidor() {
         className="mt-2 flex items-center justify-center gap-2 rounded-full bg-primary py-4 font-serif text-2xl font-semibold text-primary-foreground transition hover:brightness-110 disabled:opacity-60"
       >
         <Handshake className="h-6 w-6" />
-        {estado === "enviando" ? "Enviando..." : "Quiero distribuir la marca"}
+        {estado === "enviando" ? t("Enviando...", "Sending...") : t("Quiero distribuir la marca", "I want to distribute the brand")}
       </button>
     </form>
   );
