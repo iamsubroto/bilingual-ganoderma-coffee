@@ -31,3 +31,4 @@ use the editor.
 
 - Distribution-page photographs use decorative image layers and semantic overlay tokens in the global stylesheet, so copy stays readable and mobile framing stays consistent.
 - Display monthly distribution-maintenance terms from the shared terms module and cover numeric requirements with tests, so minimums and approximate equivalents stay consistent.
+- Visible copy is bilingual through `useLang()` from `src/lib/i18n.tsx` (inline `t(es, en)` or `{ es, en }` objects with `pick`); SSR always renders Spanish and the saved choice applies after hydration, so add both languages for any new text and avoid hydration mismatches.
