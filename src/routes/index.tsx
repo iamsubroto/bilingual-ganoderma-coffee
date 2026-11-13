@@ -31,10 +31,8 @@ import schokoladeFria from "@/assets/schokolade-frio.jpg";
 import heroProductos from "@/assets/hero-productos.jpg";
 import { productPrices, usd, costPerSachet, type ProductName } from "@/lib/product-pricing";
 import { LanguageToggle, useLang, type Texto } from "@/lib/i18n";
+import { wa } from "@/lib/whatsapp";
 
-// TODO: reemplaza con tu número real de WhatsApp (formato internacional sin +)
-const WHATSAPP = "5210000000000";
-const wa = (msg: string) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 const MSG: Texto = {
   es: "¡Hola! Me interesa el Original Mushroom Coffee GE ☕🍄",
   en: "Hi! I'm interested in Original Mushroom Coffee GE ☕🍄",

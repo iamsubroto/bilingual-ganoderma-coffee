@@ -29,6 +29,7 @@ import habitoCafe from "@/assets/distribuir-habito-cafe.jpg";
 import cafeBienestar from "@/assets/distribuir-cafe-bienestar.jpg";
 import negocioCasa from "@/assets/distribuir-negocio-casa.jpg";
 import { monthlyMaintenance } from "@/lib/distribution-terms";
+import { wa } from "@/lib/whatsapp";
 import { LanguageToggle, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/distribuye")({
