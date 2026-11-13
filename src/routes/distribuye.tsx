@@ -29,6 +29,7 @@ import habitoCafe from "@/assets/distribuir-habito-cafe.jpg";
 import cafeBienestar from "@/assets/distribuir-cafe-bienestar.jpg";
 import negocioCasa from "@/assets/distribuir-negocio-casa.jpg";
 import { monthlyMaintenance } from "@/lib/distribution-terms";
+import { wa } from "@/lib/whatsapp";
 import { LanguageToggle, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/distribuye")({
@@ -541,6 +542,58 @@ function Distribuye() {
             )}
           </p>
           <FormularioDistribuidor />
+        </div>
+      </section>
+
+      {/* 9. Dos caminos: probar o empezar */}
+      <section className="px-5 py-14">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-primary">{t("Elige tu siguiente paso", "Choose your next step")}</p>
+          <h2 className="mt-4 text-4xl font-bold leading-tight md:text-5xl">
+            {t("¿Quieres probarlo o empezar tu negocio?", "Want to try it or start your business?")}
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl font-serif text-xl text-muted-foreground">
+            {t(
+              "Toca la opción que quieras y se abre tu WhatsApp con el mensaje listo.",
+              "Tap the option you want and your WhatsApp opens with the message ready to send.",
+            )}
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <a
+              href={wa(
+                t(
+                  "Hola, quiero probar el café con ganoderma. Ayúdame a elegir el producto y hacer mi pedido.",
+                  "Hi, I'd like to try the ganoderma coffee. Help me choose a product and place my order.",
+                ),
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center gap-3 rounded-xl border-2 border-primary bg-card p-8 text-center shadow-sm transition hover:brightness-105"
+            >
+              <Coffee className="h-10 w-10 text-primary" strokeWidth={1.75} />
+              <span className="font-serif text-2xl font-semibold text-primary">{t("Quiero probar", "I want to try it")}</span>
+              <span className="text-sm leading-relaxed text-muted-foreground">
+                {t("Pide tu producto por WhatsApp y compruébalo tú mismo.", "Order your product on WhatsApp and see for yourself.")}
+              </span>
+            </a>
+            <a
+              href={wa(
+                t(
+                  "Hola, quiero empezar mi negocio distribuyendo la marca. Ayúdame a elegir el paquete adecuado.",
+                  "Hi, I want to start my business distributing the brand. Help me choose the right package.",
+                ),
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="flex flex-col items-center gap-3 rounded-xl bg-primary p-8 text-center text-primary-foreground shadow-sm transition hover:brightness-110"
+            >
+              <Rocket className="h-10 w-10" strokeWidth={1.75} />
+              <span className="font-serif text-2xl font-semibold">{t("Quiero empezar mi negocio", "I want to start my business")}</span>
+              <span className="text-sm leading-relaxed opacity-90">
+                {t("Hablamos de paquetes y del plan para arrancar paso a paso.", "We'll talk packages and the plan to get started step by step.")}
+              </span>
+            </a>
+          </div>
         </div>
       </section>
 
