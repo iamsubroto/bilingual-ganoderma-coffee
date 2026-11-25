@@ -331,15 +331,11 @@ function VideoPlantaciones() {
   const [reproduciendo, setReproduciendo] = useState(false);
 
   return (
-    <section className="bg-cream px-5 py-14">
-      <div className="mx-auto max-w-4xl">
-        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">
-          {t("Las plantaciones", "The plantations")}
-        </p>
-        <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-5xl">
-          {t("Mira de dónde viene tu café", "See where your coffee comes from")}
-        </h2>
-        <div className="mt-8 overflow-hidden rounded-xl border bg-card shadow-sm">
+    <div className="mt-8">
+      <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary-foreground">
+        {t("Las plantaciones", "The plantations")}
+      </p>
+      <div className="mt-4 overflow-hidden rounded-xl border bg-card shadow-lg">
           {reproduciendo ? (
             <div className="aspect-video w-full">
               <iframe
@@ -375,11 +371,11 @@ function VideoPlantaciones() {
               </span>
             </button>
           )}
-          <div className={`bg-caramel px-5 text-center text-primary-foreground ${reproduciendo ? "py-5" : "py-7"}`}>
-            <p className="font-serif text-2xl font-semibold leading-snug md:text-3xl">
+          <div className={`bg-card px-5 text-center ${reproduciendo ? "py-5" : "py-7"}`}>
+            <p className="font-serif text-2xl font-semibold leading-snug text-primary md:text-3xl">
               {t("Dale click para que conozcas las plantaciones", "Click to see the plantations")}
             </p>
-            <p className="mx-auto mt-3 max-w-xl text-sm md:text-base">
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground md:text-base">
               {t(
                 "Un recorrido real por los invernaderos donde crece el ganoderma que llega a tu taza.",
                 "A real walk through the greenhouses where the ganoderma in your cup is grown.",
@@ -389,15 +385,14 @@ function VideoPlantaciones() {
               <button
                 type="button"
                 onClick={() => setReproduciendo(true)}
-                className="mx-auto mt-5 flex items-center gap-2 rounded-full bg-primary-foreground px-8 py-3 font-serif text-lg font-semibold text-primary transition hover:brightness-95"
+                className="mx-auto mt-5 flex items-center gap-2 rounded-full bg-primary px-8 py-3 font-serif text-lg font-semibold text-primary-foreground transition hover:brightness-110"
               >
                 <Play className="h-5 w-5" fill="currentColor" /> {t("Ver el video", "Watch the video")}
               </button>
             )}
           </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -472,6 +467,7 @@ function Index() {
             height={1026}
             className="mx-auto mt-8 w-full max-w-2xl rounded-xl"
           />
+          <VideoPlantaciones />
           <div className="mt-8 flex flex-col gap-4">
             <a href={wa(pick(MSG))} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 rounded-full bg-primary py-4 font-serif text-2xl font-semibold text-primary-foreground transition hover:brightness-110">
               <MessageCircle className="h-6 w-6" /> {t("Pedir por WhatsApp", "Order on WhatsApp")}
@@ -525,8 +521,6 @@ function Index() {
           </div>
         </div>
       </section>
-
-      <VideoPlantaciones />
 
       <section className="mx-auto max-w-5xl px-5 py-14">
         <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">{t("Nuestros productos", "Our products")}</p>
