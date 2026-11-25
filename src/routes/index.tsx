@@ -20,6 +20,7 @@ import {
   Users,
   Package,
   Quote,
+  Play,
 } from "lucide-react";
 import ganoderma from "@/assets/ganoderma-beneficios.jpg.asset.json";
 import classic from "@/assets/ganocafe-classic.jpg.asset.json";
@@ -29,6 +30,7 @@ import classicFria from "@/assets/classic-frio.jpg";
 import tresEnUnoFria from "@/assets/3en1-frio.jpg";
 import schokoladeFria from "@/assets/schokolade-frio.jpg";
 import heroProductos from "@/assets/hero-productos.jpg";
+import plantacion from "@/assets/plantacion-ganoderma.jpg";
 import { productPrices, usd, costPerSachet, type ProductName } from "@/lib/product-pricing";
 import { LanguageToggle, useLang, type Texto } from "@/lib/i18n";
 import { wa } from "@/lib/whatsapp";
@@ -322,6 +324,83 @@ function CarruselProducto({ img, imgFria, nombre }: { img: string; imgFria: stri
   );
 }
 
+const VIDEO_ID = "6Y15eqJ37O8";
+
+function VideoPlantaciones() {
+  const { t } = useLang();
+  const [reproduciendo, setReproduciendo] = useState(false);
+
+  return (
+    <section className="bg-cream px-5 py-14">
+      <div className="mx-auto max-w-4xl">
+        <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">
+          {t("Las plantaciones", "The plantations")}
+        </p>
+        <h2 className="mt-4 text-center text-4xl font-bold leading-tight md:text-5xl">
+          {t("Mira de dónde viene tu café", "See where your coffee comes from")}
+        </h2>
+        <div className="mt-8 overflow-hidden rounded-xl border bg-card shadow-sm">
+          {reproduciendo ? (
+            <div className="aspect-video w-full">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+                title={t("Video de las plantaciones de ganoderma", "Video of the ganoderma plantations")}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setReproduciendo(true)}
+              aria-label={t("Reproducir el video de las plantaciones", "Play the plantation video")}
+              className="group relative block w-full cursor-pointer"
+            >
+              <img
+                src={plantacion}
+                alt={t(
+                  "Invernaderos de ganoderma con filas de cultivo en un paisaje tropical",
+                  "Ganoderma greenhouses with rows of crops in a tropical landscape",
+                )}
+                width={1536}
+                height={1024}
+                className="aspect-video w-full object-cover"
+              />
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg transition group-hover:scale-110">
+                  <Play className="h-9 w-9 translate-x-0.5 text-primary-foreground" fill="currentColor" />
+                </span>
+              </span>
+            </button>
+          )}
+          <div className={`bg-caramel px-5 text-center text-primary-foreground ${reproduciendo ? "py-5" : "py-7"}`}>
+            <p className="font-serif text-2xl font-semibold leading-snug md:text-3xl">
+              {t("Dale click para que conozcas las plantaciones", "Click to see the plantations")}
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm md:text-base">
+              {t(
+                "Un recorrido real por los invernaderos donde crece el ganoderma que llega a tu taza.",
+                "A real walk through the greenhouses where the ganoderma in your cup is grown.",
+              )}
+            </p>
+            {!reproduciendo && (
+              <button
+                type="button"
+                onClick={() => setReproduciendo(true)}
+                className="mx-auto mt-5 flex items-center gap-2 rounded-full bg-primary-foreground px-8 py-3 font-serif text-lg font-semibold text-primary transition hover:brightness-95"
+              >
+                <Play className="h-5 w-5" fill="currentColor" /> {t("Ver el video", "Watch the video")}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const { t, pick } = useLang();
   const [seleccion, setSeleccion] = useState<Record<ProductName, Opcion>>({
@@ -446,6 +525,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <VideoPlantaciones />
 
       <section className="mx-auto max-w-5xl px-5 py-14">
         <p className="text-center text-sm font-bold uppercase tracking-[0.25em] text-primary">{t("Nuestros productos", "Our products")}</p>
