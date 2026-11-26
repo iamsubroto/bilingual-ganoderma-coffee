@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "23a77fa5-4f9a-4972-a3fd-710ae17656f9",
-  "project_id": "041a9637-8610-42ac-8a1c-4b5b0f3361d5",
-  "url": "/__l5e/assets-v1/23a77fa5-4f9a-4972-a3fd-710ae17656f9/ganocafe-schokolade.jpg",
-  "r2_key": "a/v1/041a9637-8610-42ac-8a1c-4b5b0f3361d5/23a77fa5-4f9a-4972-a3fd-710ae17656f9/ganocafe-schokolade.jpg",
-  "original_filename": "ganocafe-schokolade.jpg",
-  "size": 106158,
   "content_type": "image/jpeg",
-  "created_at": "2026-11-06T18:58:59Z"
+  "created_at": "2026-11-06T18:58:59Z",
+  "original_filename": "ganocafe-schokolade.jpg",
+  "project_id": "29bba2c4-3a3c-4728-92b1-018674151cc5",
+  "r2_key": "a/v1/29bba2c4-3a3c-4728-92b1-018674151cc5/23a77fa5-4f9a-4972-a3fd-710ae17656f9/ganocafe-schokolade.jpg",
+  "size": 106158,
+  "url": "/__l5e/assets-v1/23a77fa5-4f9a-4972-a3fd-710ae17656f9/ganocafe-schokolade.jpg",
+  "version": 1
 }
